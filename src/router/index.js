@@ -38,10 +38,10 @@ const routes = [
         component: rights
       },
       {
-      path: '/roles',
-      name: 'roles',
-      component: roles
-    },
+        path: '/roles',
+        name: 'roles',
+        component: roles
+      }
     ]
   }
 ]

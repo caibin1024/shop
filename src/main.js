@@ -8,9 +8,9 @@ import 'element-plus/lib/theme-chalk/index.css'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
-axios.interceptors.request.use(config=>{
-    config.headers.Authorization=window.sessionStorage.getItem('token')
-    return config
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
 })
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
