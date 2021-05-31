@@ -1,30 +1,34 @@
 <template>
-  <div class="login_container">
-    <div class="login_box">
+  <div class='login_container'>
+    <div class='login_box'>
       <!-- 头像 -->
-      <div class="avatar_box">
-        <img src="../assets/logo.png" alt />
+      <div class='avatar_box'>
+        <img src='../assets/logo.png'
+             alt />
       </div>
       <!-- 表单 -->
-      <el-form
-        label-width="0"
-        class="login_form"
-        :model="loginForm"
-        :rules="loginFromRules"
-        ref="loginFormRef"
-      >
+      <el-form label-width='0'
+               class='login_form'
+               :model='loginForm'
+               :rules='loginFromRules'
+               ref='loginFormRef'>
         <!-- 用户名 -->
-        <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
+        <el-form-item prop='username'>
+          <el-input v-model='loginForm.username'
+                    prefix-icon='el-icon-user'></el-input>
         </el-form-item>
         <!-- 密码 -->
-        <el-form-item prop="password">
-          <el-input v-model="loginForm.password" prefix-icon="el-icon-lock" type="password"></el-input>
+        <el-form-item prop='password'>
+          <el-input v-model='loginForm.password'
+                    prefix-icon='el-icon-lock'
+                    type='password'></el-input>
         </el-form-item>
         <!-- 按钮 -->
-        <el-form-item class="btns">
-          <el-button type="primary" @click="login">登录</el-button>
-          <el-button type="info" @click="resetLoginForm">重置</el-button>
+        <el-form-item class='btns'>
+          <el-button type='primary'
+                     @click='login'>登录</el-button>
+          <el-button type='info'
+                     @click='resetLoginForm'>重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -33,11 +37,11 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       loginForm: {
         username: 'admin',
-        password: '123456',
+        password: '123456'
       },
       loginFromRules: {
         username: [
@@ -46,8 +50,8 @@ export default {
             min: 3,
             max: 10,
             message: '长度在 3 到 10 个字符',
-            trigger: 'blur',
-          },
+            trigger: 'blur'
+          }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
@@ -55,10 +59,10 @@ export default {
             min: 6,
             max: 15,
             message: '长度在 6 到 15 个字符',
-            trigger: 'blur',
-          },
-        ],
-      },
+            trigger: 'blur'
+          }
+        ]
+      }
     }
   },
   methods: {
@@ -66,7 +70,7 @@ export default {
       console.log(this)
       this.$refs.loginFormRef.resetFields()
     },
-    login() {
+    login () {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return
         const { data: res } = await this.$axios.post('login', this.loginForm)
@@ -78,8 +82,8 @@ export default {
           this.$message.error(res.meta.msg)
         }
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

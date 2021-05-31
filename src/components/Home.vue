@@ -3,32 +3,31 @@
   <el-container class="home-container">
     <el-header>
       <div>
-        <img src="../assets/logo.png" alt="" />
+        <img src="../assets/logo.png"
+             alt="" />
         <span>电商后台管理系统</span>
       </div>
-      <el-button type="info" @click="logout">退出</el-button>
+      <el-button type="info"
+                 @click="logout">退出</el-button>
     </el-header>
     <el-container>
       <!-- 侧边栏 -->
       <el-aside :width="isCollapse ? '64px' : '200px'">
-        <div class="toggle-button" @click="toggleCollapse">|||</div>
+        <div class="toggle-button"
+             @click="toggleCollapse">|||</div>
 
-        <el-menu
-          background-color="#333744"
-          text-color="#fff"
-          active-text-color="#409bff"
-          unique-opened
-          :collapse="isCollapse"
-          :collapse-transition="false"
-          router
-          :default-active="$route.path"
-        >
+        <el-menu background-color="#333744"
+                 text-color="#fff"
+                 active-text-color="#409bff"
+                 unique-opened
+                 :collapse="isCollapse"
+                 :collapse-transition="false"
+                 router
+                 :default-active="$route.path">
           <!-- 一级菜单 -->
-          <el-submenu
-            :index="item.id.toString()"
-            v-for="item in menuList"
-            :key="item.id"
-          >
+          <el-submenu :index="item.id.toString()"
+                      v-for="item in menuList"
+                      :key="item.id">
             <!-- 一级菜单模板区 -->
             <template #title>
               <!-- 图标 -->
@@ -37,17 +36,14 @@
               <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item
-              :index="'/' + child.path"
-              v-for="child in item.children"
-              :key="child.id"
-              ><template #title>
+            <el-menu-item :index="'/' + child.path"
+                          v-for="child in item.children"
+                          :key="child.id"><template #title>
                 <!-- 图标 -->
                 <i class="el-icon-menu"></i>
                 <!-- 文本 -->
                 <span>{{ child.authName }} </span>
-              </template></el-menu-item
-            >
+              </template></el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -61,7 +57,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       menuList: [],
       iconList: {
@@ -69,28 +65,28 @@ export default {
         103: 'el-icon-s-cooperation',
         101: 'el-icon-s-goods',
         102: 'el-icon-s-order',
-        145: 'el-icon-s-marketing',
+        145: 'el-icon-s-marketing'
       },
-      isCollapse: false,
+      isCollapse: false
     }
   },
   methods: {
-    logout() {
+    logout () {
       window.sessionStorage.clear()
       this.$router.push('/login')
     },
-    async getMenuList() {
+    async getMenuList () {
       const { data: res } = await this.$axios.get('menus')
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menuList = res.data
     },
-    toggleCollapse() {
+    toggleCollapse () {
       this.isCollapse = !this.isCollapse
-    },
+    }
   },
-  created() {
+  created () {
     this.getMenuList()
-  },
+  }
 }
 </script>
 

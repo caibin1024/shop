@@ -67,7 +67,7 @@
       </el-dialog>
       <!-- 修改用户对话框 -->
       <el-dialog
-        title="添加用户"
+        title="修改用户"
         v-model="editDialogVisible"
         width="50%"
         @close="editDialogClosed"
