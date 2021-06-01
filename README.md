@@ -1,4 +1,4 @@
-# shop
+# shop（demo）
 
 ## 技术栈：vue3.0 + vuex + vue-router + elementPlus + axios
 
