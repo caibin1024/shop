@@ -1,5 +1,7 @@
 # shop
 
+### 技术栈：vue3.0 + vuex + vue-router + elementPlus + axios
+
 ## Project setup
 ```
 npm install
